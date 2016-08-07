@@ -1,4 +1,6 @@
 #!/bin/sh
+#chkconfig: 2345 20 80
+#deskription: hehe
 source /etc/init.d/functions
 start() {
 	daemon "python -m SimpleHTTPServer 8080 &"
@@ -17,9 +19,11 @@ check_status() {
 case "$1" in
 	start)
 		check_status && echo "error exit" && exit 0
+		$1
 	;;
 	stop)
 		check_status && echo "error exit" && exit 0
+		$1
 	;;
 	restart)
 		stop
